@@ -1,6 +1,6 @@
 document.querySelector("h1").addEventListener("click", () => {
 	const greetings = [
-		"Welcome to the DevOps end to end project!",
+		"Welcome to the DevOps end to end project! resatrt",
 		"Automate everything with jenkins🚀",
 		"CI/CD makes life easier!",
 		"Docker + Jenkins = ❤️",

@@ -3,7 +3,7 @@ pipeline{
 
     environment{
         IMAGE_NAME = 'jamiekariuki/nextjs-app'
-        SERVER_IP = 'ubuntu@51.20.63.70'
+        SERVER_IP = 'ubuntu@35.178.105.43'
     }
 
     stages{
@@ -12,6 +12,8 @@ pipeline{
                 echo "Checking out code from repository...."  
             }
         }
+
+        
 
         stage("Build docker image"){
             steps{
@@ -29,20 +31,9 @@ pipeline{
             }   
         }
 
-        /* stage("Deploy to AWS"){
-            steps{
-                 script{
-                    echo "Deploying docker image to AWS..."
-                    def dockerCmd = "docker-compose -f docker-compose.yaml up --detach"
-                    sshagent(['ec2-server-key']){
-                        sh "scp docker-compose.yaml ${SERVER_IP}:/home/ubuntu"
-                        sh "ssh -o StrictHostKeyChecking=no ${SERVER_IP} ${dockerCmd}"
-                    }
-                } 
-             }    
-        } */
+       
         stage("Deploy to AWS"){
-    steps{
+            steps{
         script{
             echo "Deploying docker image to AWS..."
             def dockerCmd = "sudo docker-compose -f docker-compose.yaml up --detach"
